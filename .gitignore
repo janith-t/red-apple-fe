@@ -150,3 +150,18 @@ vite.config.ts.timestamp-*
 
 # Project brief (local only)
 RED_APPLE_PROJECT_BRIEF.md
+TECHNO_FE_ARCHITECTURE_GUIDE.md
+
+# Vite local files
+*.local
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
