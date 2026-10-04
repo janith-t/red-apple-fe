@@ -147,3 +147,6 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+# Project brief (local only)
+RED_APPLE_PROJECT_BRIEF.md
