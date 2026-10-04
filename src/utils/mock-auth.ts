@@ -1,6 +1,7 @@
 // DEVELOPMENT ONLY. Used while VITE_USE_MOCK_AUTH=true and no backend exists.
 // Builds an unsigned JWT-shaped token so the real decode/expiry/permission code paths are exercised.
-import type { LoginRequest } from "@/types/auth";
+import type { ApiResponse } from "@/types/api";
+import type { ForgotPasswordRequest, LoginRequest, RegisterRequest } from "@/types/auth";
 import { ROLES } from "@/constants/permissions";
 
 const MOCK_SESSION_HOURS = 8;
@@ -12,8 +13,10 @@ const base64Url = (value: object) =>
 
 export const isMockAuthEnabled = import.meta.env.VITE_USE_MOCK_AUTH === "true";
 
+export const mockDelay = (ms = MOCK_LATENCY_MS) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export const createMockToken = async ({ username }: LoginRequest): Promise<string> => {
-  await new Promise((resolve) => setTimeout(resolve, MOCK_LATENCY_MS));
+  await mockDelay();
   const now = Math.floor(Date.now() / 1000);
   const header = base64Url({ alg: "none", typ: "JWT" });
   const payload = base64Url({
@@ -26,4 +29,14 @@ export const createMockToken = async ({ username }: LoginRequest): Promise<strin
     exp: now + MOCK_SESSION_HOURS * 60 * 60,
   });
   return `${header}.${payload}.mock`;
+};
+
+export const mockRegister = async (_request?: RegisterRequest): Promise<ApiResponse<null>> => {
+  await mockDelay();
+  return { payload: null, message: "Registration submitted for approval.", status: 201 };
+};
+
+export const mockForgotPassword = async (_request?: ForgotPasswordRequest): Promise<ApiResponse<null>> => {
+  await mockDelay();
+  return { payload: null, message: "If an account matches, reset instructions have been sent.", status: 200 };
 };

@@ -26,3 +26,20 @@ export interface LoginRequest {
 export interface LoginFormValues extends LoginRequest {
   rememberMe: boolean;
 }
+
+export interface RegisterRequest {
+  fullName: string;
+  agencyName: string;
+  email: string;
+  phone: string;
+  password: string;
+}
+
+export interface RegisterFormValues extends RegisterRequest {
+  confirmPassword: string;
+  acceptTerms: boolean;
+}
+
+export interface ForgotPasswordRequest {
+  username: string; // email or Agent ID
+}

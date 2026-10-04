@@ -1,0 +1,36 @@
+/* Shared by all auth screens. Mockup values: 46px inputs, #D3D7DD border, 2px apple-red focus ring. */
+.input {
+  --input-height: 46px;
+  font-size: 15px;
+
+  &:not([data-error]) {
+    border-color: #d3d7dd;
+  }
+}
+
+.input:not([data-error]):focus,
+.input:not([data-error]):focus-within {
+  outline: 2px solid var(--mantine-color-appleRed-6);
+  outline-offset: 1px;
+  border-color: var(--mantine-color-appleRed-6);
+}
+
+.input::placeholder,
+.input input::placeholder {
+  color: #8a9099;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.link {
+  color: var(--mantine-color-appleRed-7);
+  font-weight: 600;
+
+  &:hover {
+    color: var(--mantine-color-appleRed-8);
+  }
+}
