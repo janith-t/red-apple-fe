@@ -24,3 +24,15 @@ export const formatDateRange = (start: string | Date, end: string | Date): strin
 
 // Date-only values are sent to the backend as "YYYY-MM-DD" in local time (avoids the UTC off-by-one of toISOString()).
 export const toApiDate = (value: string | Date): string => dayjs(value).format("YYYY-MM-DD");
+
+// Short form for tight tiles: "LKR 4.85M", "USD 12.4K". Use formatCurrency() wherever the exact figure matters.
+export const formatCompactCurrency = (amount: number, currency: Currency = "LKR"): string =>
+  `${currency} ${new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 2 }).format(amount)}`;
+
+export const getInitials = (name: string): string =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");

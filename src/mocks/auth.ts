@@ -3,17 +3,15 @@
 import type { ApiResponse } from "@/types/api";
 import type { ForgotPasswordRequest, LoginRequest, RegisterRequest } from "@/types/auth";
 import { ROLES } from "@/constants/permissions";
+import { mockDelay } from "./utils";
 
 const MOCK_SESSION_HOURS = 8;
-const MOCK_LATENCY_MS = 600;
 
 const base64Url = (value: object) =>
   btoa(String.fromCharCode(...new TextEncoder().encode(JSON.stringify(value))))
     .replace(/=+$/, "").replace(/\+/g, "-").replace(/\//g, "_");
 
 export const isMockAuthEnabled = import.meta.env.VITE_USE_MOCK_AUTH === "true";
-
-export const mockDelay = (ms = MOCK_LATENCY_MS) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const createMockToken = async ({ username }: LoginRequest): Promise<string> => {
   await mockDelay();

@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import useAuth from "../common/useAuth";
 import { apiRequest } from "@/utils/api-request";
-import { createMockToken, isMockAuthEnabled } from "@/utils/mock-auth";
+import { createMockToken, isMockAuthEnabled } from "@/mocks/auth";
 import type { LoginFormValues } from "@/types/auth";
 
 // POST /auth/login → payload is the raw JWT. Starts the session on success.

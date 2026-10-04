@@ -29,12 +29,6 @@ export const tokens = {
   textMuted: "#5A606B",
   placeholder: "#8A9099",
   primaryTint: "#FCEBEE",
-  status: {
-    confirmed: { bg: "#E6F4EC", fg: "#1A6B45" },
-    quoted: { bg: "#E8F0FB", fg: "#1F55A0" },
-    awaitingPayment: { bg: "#FFF4DB", fg: "#7A5000" },
-    draft: { bg: "#EEF0F3", fg: "#3A3F47" },
-  },
 } as const;
 
 export const theme = createTheme({

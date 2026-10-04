@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/utils/api-request";
-import { isMockAuthEnabled, mockForgotPassword } from "@/utils/mock-auth";
+import { isMockAuthEnabled, mockForgotPassword } from "@/mocks/auth";
 import type { ForgotPasswordRequest } from "@/types/auth";
 
 // POST /auth/forgot-password → the backend emails reset instructions to the registered address.

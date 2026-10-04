@@ -1,31 +1,39 @@
-// PLACEHOLDER shell – replaced by the AppShell (sidebar + top bar) from the dashboard mockup in step D.
-import { AppShell, Button, Group, Text } from "@mantine/core";
+import { AppShell, Burger, Group, Stack } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router";
-import useAuth from "@/hooks/common/useAuth";
+import BrandLogo from "@/components/ui/BrandLogo";
+import Sidebar from "@/components/ui-interfaces/common/Sidebar";
+import TopBar from "@/components/ui-interfaces/common/TopBar";
 import { tokens } from "@/utils/theme";
 
+const NAVBAR_WIDTH = 248;
+
+// Authenticated shell: sidebar + top bar + routed page. Below md the sidebar becomes a drawer behind a burger.
 export default function App() {
-  const { userInfo, logout } = useAuth();
+  const [navOpened, { toggle: toggleNav, close: closeNav }] = useDisclosure(false);
 
   return (
-    <AppShell header={{ height: 60 }} padding="md">
-      <AppShell.Header px="md">
-        <Group h="100%" justify="space-between">
-          <Text fw={800} c="appleRed">
-            Red Apple
-          </Text>
-          <Group gap="sm">
-            <Text size="sm" c="dimmed">
-              {userInfo?.displayName}
-            </Text>
-            <Button variant="default" size="xs" onClick={() => logout()}>
-              Sign out
-            </Button>
-          </Group>
+    <AppShell
+      header={{ height: { base: 60, md: 0 } }}
+      navbar={{ width: NAVBAR_WIDTH, breakpoint: "md", collapsed: { mobile: !navOpened } }}
+      bg={tokens.pageBg}
+    >
+      <AppShell.Header hiddenFrom="md" px={16} style={{ borderColor: tokens.border }}>
+        <Group h="100%" gap={12} wrap="nowrap">
+          <Burger opened={navOpened} onClick={toggleNav} size="sm" aria-label="Toggle navigation" />
+          <BrandLogo />
         </Group>
       </AppShell.Header>
-      <AppShell.Main bg={tokens.pageBg}>
-        <Outlet />
+
+      <AppShell.Navbar style={{ borderColor: tokens.border }}>
+        <Sidebar onNavigate={closeNav} />
+      </AppShell.Navbar>
+
+      <AppShell.Main>
+        <Stack gap={24} px={{ base: 16, sm: 32 }} pt={24} pb={48}>
+          <TopBar />
+          <Outlet />
+        </Stack>
       </AppShell.Main>
     </AppShell>
   );

@@ -1,0 +1,57 @@
+/* Bento grid (dashboard mockup): 4 columns, 16px gap.
+   Uses a container query so the layout follows the space next to the sidebar, not the window width:
+   ≥ 960px → 4 columns · ≥ 600px → 2 columns · otherwise 1 column. */
+.wrapper {
+  container-type: inline-size;
+}
+
+.bento {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@container (min-width: 600px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .span2,
+  .span3,
+  .planTour {
+    grid-column: span 2;
+  }
+}
+
+@container (min-width: 960px) {
+  .bento {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .planTour {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .span3 {
+    grid-column: span 3;
+  }
+}
+
+/* Quick actions: full width in the 2-column layout, a single cell next to "Upcoming tours" in 4 columns. */
+@container (min-width: 600px) {
+  .span2Narrow {
+    grid-column: span 2;
+  }
+}
+
+@container (min-width: 960px) {
+  .span2Narrow {
+    grid-column: span 1;
+  }
+}
+
+/* Mockup spacing between itinerary days (Mantine's default gap is 32px). */
+.timelineItem:not(:first-of-type) {
+  margin-top: 14px;
+}

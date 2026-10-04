@@ -1,0 +1,34 @@
+/* Nav item: 44px touch target, 10px radius; active = tint background + brand red (dashboard mockup). */
+.link {
+  min-height: 44px;
+  border-radius: 10px;
+  padding: 0 12px;
+  color: #3a3f47;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #f6f7f9;
+  }
+
+  &[data-active],
+  &[data-active]:hover {
+    background-color: #fcebee;
+    color: var(--mantine-color-appleRed-6);
+    font-weight: 700;
+  }
+}
+
+.linkLabel {
+  font-size: 14px;
+  font-weight: inherit;
+}
+
+.linkSection {
+  margin-inline-end: 12px;
+}
+
+.signOut {
+  composes: link;
+  color: #5a606b;
+}

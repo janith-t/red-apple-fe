@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/utils/api-request";
-import { isMockAuthEnabled, mockRegister } from "@/utils/mock-auth";
+import { isMockAuthEnabled, mockRegister } from "@/mocks/auth";
 import type { RegisterRequest } from "@/types/auth";
 
 // POST /auth/register → new agent accounts are created pending approval; no session is started.
