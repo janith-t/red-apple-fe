@@ -14,14 +14,25 @@ export const setUnauthorizedHandler = (handler: (() => void) | null) => {
   unauthorizedHandler = handler;
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.trim();
+
+// Without a base URL, requests silently hit the Vite dev server and fail with a generic 404.
+// Fail loudly instead so a missing env setup is obvious.
+const MISSING_BASE_URL_MESSAGE =
+  "VITE_API_BASE_URL is not set. Run `npm run dev` (it loads .env.development) or set it in your env file, then restart the dev server.";
+
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL,
+  baseURL: API_BASE_URL,
   timeout: 30_000,
   headers: { "Content-Type": "application/json" },
 });
 
 // REQUEST: correlation id on every call; bearer token on every non-public call.
 apiClient.interceptors.request.use((config) => {
+  if (!API_BASE_URL) {
+    console.error(MISSING_BASE_URL_MESSAGE);
+    throw new Error(MISSING_BASE_URL_MESSAGE);
+  }
   config.headers.set("uuid", generateUUID());
   if (!isPublicEndpoint(config.url)) {
     const token = tokenStorage.get();

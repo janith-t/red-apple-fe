@@ -40,9 +40,10 @@ An internal, login-protected **agent system**. Travel agents use it to plan tour
 
 ```bash
 npm install
-cp .env.example .env
 npm run dev          # http://localhost:5173
 ```
+
+No env setup is needed for development: `npm run dev` automatically loads the committed [`.env.development`](.env.development), which turns mock mode on. Sign in with any email/Agent ID and password.
 
 | Script | What it does |
 |---|---|
@@ -55,9 +56,18 @@ npm run dev          # http://localhost:5173
 
 | Variable | Purpose |
 |---|---|
-| `VITE_API_BASE_URL` | Base URL of the backend REST API |
+| `VITE_API_BASE_URL` | Base URL of the backend REST API (required when mock flags are off) |
 | `VITE_USE_MOCK_AUTH` | `true` = sign in without a backend (any credentials work) |
 | `VITE_USE_MOCK_API` | `true` = data hooks return mock data instead of calling the API |
+
+| File | Committed? | Used for |
+|---|---|---|
+| `.env.development` | ✅ | Shared dev defaults (mock mode on). No secrets. |
+| `.env.development.local` | ❌ | Your personal dev overrides, e.g. pointing at a local backend. Takes priority over `.env.development`. |
+| `.env.production` / CI settings | ❌ | Values for production builds (mock flags off). |
+| `.env.example` | ✅ | Reference list of every variable. |
+
+Vite only reads env files at startup — **restart `npm run dev` after changing one.** If `VITE_API_BASE_URL` is missing while mock mode is off, API calls fail with a message saying so.
 
 ### Mock mode
 
