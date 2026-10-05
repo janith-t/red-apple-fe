@@ -14,7 +14,7 @@ export default function EmptyState({ icon: Icon, title, description, action }: E
   return (
     <Center py={48} px={16}>
       <Stack align="center" gap={10} maw={420} ta="center">
-        <Center w={56} h={56} bg={tokens.primaryTint} c="appleRed.6" style={{ borderRadius: 16 }}>
+        <Center w={56} h={56} bg={tokens.primaryTint} c={tokens.brandText} style={{ borderRadius: 16 }}>
           <Icon size={28} stroke={1.6} aria-hidden />
         </Center>
         <Title order={3} fz={18} fw={700}>

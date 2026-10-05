@@ -37,8 +37,8 @@ export default function NextDeparture({ departure, loading, className }: NextDep
           lineWidth={2}
           styles={{
             itemBullet: {
-              border: "3px solid var(--mantine-color-appleRed-6)",
-              backgroundColor: "white",
+              border: `3px solid ${tokens.brandText}`,
+              backgroundColor: tokens.surface,
             },
           }}
           classNames={{ item: classes.timelineItem }}

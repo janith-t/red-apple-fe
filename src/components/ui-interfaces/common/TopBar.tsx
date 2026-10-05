@@ -15,6 +15,7 @@ import { IconBell, IconPlus, IconSearch } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { Link, useNavigate } from "react-router";
+import ColorSchemeToggle from "@/components/ui/ColorSchemeToggle";
 import useAllNotifications from "@/hooks/notifications/useAllNotifications";
 import { ROUTES } from "@/constants/routes";
 import { tokens } from "@/utils/theme";
@@ -40,7 +41,7 @@ export default function TopBar() {
           type="search"
           aria-label="Search"
           placeholder="Search packages, clients, quotation refs"
-          leftSection={<IconSearch size={18} stroke={2} color={tokens.textMuted} aria-hidden />}
+          leftSection={<IconSearch size={18} stroke={2} style={{ color: tokens.textMuted }} aria-hidden />}
           leftSectionWidth={42}
           value={search}
           onChange={(event) => setSearch(event.currentTarget.value)}
@@ -49,6 +50,7 @@ export default function TopBar() {
       </form>
 
       <Group gap={10} ml="auto" wrap="nowrap">
+        <ColorSchemeToggle />
         <Popover width={320} position="bottom-end" shadow="md" radius="md">
           <Popover.Target>
             <Indicator color="appleRed.6" size={8} offset={11} disabled={unreadCount === 0} processing={false}>

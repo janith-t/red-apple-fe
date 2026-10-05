@@ -14,7 +14,7 @@ interface AuthPageLayoutProps {
 // Split layout shared by login, register and forgot password: brand panel left, content right.
 export default function AuthPageLayout({ title, subtitle, contentWidth = 400, children }: AuthPageLayoutProps) {
   return (
-    <Box mih="100vh" bg="white" c={tokens.textPrimary} style={{ display: "flex", flexWrap: "wrap" }}>
+    <Box mih="100vh" bg={tokens.surface} c={tokens.textPrimary} style={{ display: "flex", flexWrap: "wrap" }}>
       <AuthBrandPanel />
 
       <Box

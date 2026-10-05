@@ -29,7 +29,7 @@ export default function QuickActions({ className }: { className?: string }) {
           <Text fz={14} fw={600}>
             {label}
           </Text>
-          <IconChevronRight size={16} stroke={2} color={tokens.textMuted} aria-hidden />
+          <IconChevronRight size={16} stroke={2} style={{ color: tokens.textMuted }} aria-hidden />
         </UnstyledButton>
       ))}
     </SectionCard>

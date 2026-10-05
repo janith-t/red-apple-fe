@@ -21,7 +21,7 @@ export default function StatCard({ label, value, caption, icon: Icon, loading, t
         <Text fz={14} fw={600} c={tokens.textMuted}>
           {label}
         </Text>
-        <Center w={36} h={36} bg={tokens.primaryTint} c="appleRed.6" style={{ borderRadius: 10, flexShrink: 0 }}>
+        <Center w={36} h={36} bg={tokens.primaryTint} c={tokens.brandText} style={{ borderRadius: 10, flexShrink: 0 }}>
           <Icon size={18} stroke={1.8} aria-hidden />
         </Center>
       </Group>

@@ -1,11 +1,12 @@
 import type { PackageStatus } from "@/types/package";
+import { tokens } from "@/utils/theme";
 
-// Display label + badge colours per status. Colours come from the brief; none of them use the brand red.
+// Display label + badge colours per status (light/dark values live in utils/theme.ts). None use the brand red.
 export const PACKAGE_STATUS: Record<PackageStatus, { label: string; bg: string; fg: string }> = {
-  confirmed: { label: "Confirmed", bg: "#E6F4EC", fg: "#1A6B45" },
-  quoted: { label: "Quoted", bg: "#E8F0FB", fg: "#1F55A0" },
-  awaitingPayment: { label: "Awaiting payment", bg: "#FFF4DB", fg: "#7A5000" },
-  draft: { label: "Draft", bg: "#EEF0F3", fg: "#3A3F47" },
+  confirmed: { label: "Confirmed", bg: tokens.statusConfirmedBg, fg: tokens.statusConfirmedFg },
+  quoted: { label: "Quoted", bg: tokens.statusQuotedBg, fg: tokens.statusQuotedFg },
+  awaitingPayment: { label: "Awaiting payment", bg: tokens.statusAwaitingPaymentBg, fg: tokens.statusAwaitingPaymentFg },
+  draft: { label: "Draft", bg: tokens.statusDraftBg, fg: tokens.statusDraftFg },
 };
 
 // Order of the Plan Tour wizard steps (shown on the dashboard CTA; the wizard will reuse it).

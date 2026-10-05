@@ -223,7 +223,8 @@ const { login, loginLoading, loginError, reset } = useLogin();
 ### 4.7 UI & theme
 
 - Mantine theme in `utils/theme.ts`: brand **red `#C41E3A`** (`appleRed` scale; the logo artwork itself is `#F44168`), Plus Jakarta Sans, radius 10px (inputs/buttons) and 18px (cards).
-- Extra design tokens (page background, borders, text shades) are exported as `tokens`.
+- Extra design tokens (page background, borders, text shades, status colours) are exported as `tokens`. Each one is a CSS variable with a light and a dark value, registered through Mantine's `cssVariablesResolver` — always use `tokens.*` (or `var(--app-…)` in CSS modules), never raw hex, so dark mode keeps working.
+- **Dark mode:** Mantine colour schemes. The sun/moon `ColorSchemeToggle` in the top bar calls `useMantineColorScheme`; Mantine saves the choice in localStorage and a small script in `index.html` applies it before the first paint (no flash). Brand surfaces (red panel, red tiles) stay red in both modes.
 - **Logo:** vector shapes extracted from the client's PDF live in `components/ui/brand/paths.ts` and are drawn by `BrandMark` / `BrandLogo` (icon + SERENE lettering; TRAVELS lettering or a text subtitle). Exported files for other uses are in [`images/`](images/): full logo and icon, in colour and white, as PNG (transparent) and SVG.
 - Status colours never use red (red = brand): Confirmed (green), Quoted (blue), Awaiting payment (amber), Draft (grey) — `constants/packageStatus.ts`.
 - Design direction: functional minimalism; bento grid on the dashboard only; travel imagery only on auth screens, empty states, itinerary cards and PDFs.

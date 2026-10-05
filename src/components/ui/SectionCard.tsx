@@ -38,7 +38,7 @@ export default function SectionCard({ title, subtitle, action, gap = 14, childre
             )}
           </Stack>
           {action && (
-            <Anchor component={Link} to={action.to} fz={14} fw={600} c="appleRed.7" underline="hover">
+            <Anchor component={Link} to={action.to} fz={14} fw={600} c={tokens.link} underline="hover">
               {action.label}
             </Anchor>
           )}
