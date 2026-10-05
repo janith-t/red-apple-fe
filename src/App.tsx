@@ -21,7 +21,7 @@ export default function App() {
       <AppShell.Header hiddenFrom="md" px={16} style={{ borderColor: tokens.border }}>
         <Group h="100%" gap={12} wrap="nowrap">
           <Burger opened={navOpened} onClick={toggleNav} size="sm" aria-label="Toggle navigation" />
-          <BrandLogo />
+          <BrandLogo subtitle="Agent portal" />
         </Group>
       </AppShell.Header>
 

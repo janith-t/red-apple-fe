@@ -34,7 +34,7 @@ export default function Sidebar({ onNavigate }: SidebarProps) {
   return (
     <Stack h="100%" gap={28} px={16} py={24}>
       <Box px={8} visibleFrom="md">
-        <BrandLogo />
+        <BrandLogo subtitle="Agent portal" />
       </Box>
 
       <ScrollArea type="never" style={{ flex: 1 }}>

@@ -24,7 +24,7 @@ export default function AuthBrandPanel() {
       py={{ base: 32, sm: 48 }}
       style={{ flex: "1 1 480px" }}
     >
-      <BrandLogo variant="onBrand" size="lg" subtitle="Travel & Holidays Lanka" />
+      <BrandLogo variant="onBrand" size="lg" />
 
       <Stack gap={20} maw={520}>
         <Title order={2} c="white" fz={{ base: 26, sm: 44 }} lh={1.12} fw={800} lts="-0.02em">

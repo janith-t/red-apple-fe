@@ -1,6 +1,6 @@
 # red-apple-fe
 
-Agent portal for **Red Apple Travel & Holidays Lanka (Pvt) Ltd** — plan tours, build itineraries, price them and send quotations to clients.
+Agent portal for **Serene Travels (Pvt) Ltd** — plan tours, build itineraries, price them and send quotations to clients.
 
 React · TypeScript · Vite · Mantine
 
@@ -30,7 +30,7 @@ An internal, login-protected **agent system**. Travel agents use it to plan tour
 | 11 | Info | ⏳ Placeholder |
 | 12 | Reports & outputs | ⏳ Placeholder |
 
-**Package lifecycle:** `Draft → Quoted → Awaiting payment → Confirmed`. Reference format: `RA-0001`.
+**Package lifecycle:** `Draft → Quoted → Awaiting payment → Confirmed`. Reference format: `ST-0001`.
 
 ---
 
@@ -222,8 +222,9 @@ const { login, loginLoading, loginError, reset } = useLogin();
 
 ### 4.7 UI & theme
 
-- Mantine theme in `utils/theme.ts`: brand **apple red `#C41E3A`** (`appleRed` scale), Plus Jakarta Sans, radius 10px (inputs/buttons) and 18px (cards).
+- Mantine theme in `utils/theme.ts`: brand **red `#C41E3A`** (`appleRed` scale; the logo artwork itself is `#F44168`), Plus Jakarta Sans, radius 10px (inputs/buttons) and 18px (cards).
 - Extra design tokens (page background, borders, text shades) are exported as `tokens`.
+- **Logo:** vector shapes extracted from the client's PDF live in `components/ui/brand/paths.ts` and are drawn by `BrandMark` / `BrandLogo` (icon + SERENE lettering; TRAVELS lettering or a text subtitle). Exported files for other uses are in [`images/`](images/): full logo and icon, in colour and white, as PNG (transparent) and SVG.
 - Status colours never use red (red = brand): Confirmed (green), Quoted (blue), Awaiting payment (amber), Draft (grey) — `constants/packageStatus.ts`.
 - Design direction: functional minimalism; bento grid on the dashboard only; travel imagery only on auth screens, empty states, itinerary cards and PDFs.
 - Touch targets ≥ 44px, real `<button>`/`<a>` elements, labelled inputs.

@@ -9,14 +9,14 @@ export const getMockNotifications = async (): Promise<AppNotification[]> => {
     {
       id: "n1",
       title: "Quotation accepted",
-      message: "Sophie Laurent accepted quotation RA-0142.",
+      message: "Sophie Laurent accepted quotation ST-0142.",
       createdAt: dayjs().subtract(25, "minute").toISOString(),
       read: false,
     },
     {
       id: "n2",
       title: "Payment reminder",
-      message: "RA-0145 (Mehta family) is still awaiting payment.",
+      message: "ST-0145 (Mehta family) is still awaiting payment.",
       createdAt: dayjs().subtract(3, "hour").toISOString(),
       read: false,
     },

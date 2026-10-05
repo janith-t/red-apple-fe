@@ -69,7 +69,7 @@ export default function Register() {
 
   if (isSuccess) {
     return (
-      <AuthPageLayout title="Registration submitted" subtitle="Thanks for registering with Red Apple.">
+      <AuthPageLayout title="Registration submitted" subtitle="Thanks for registering with Serene Travels.">
         <AuthResult>
           Your agent account for <strong>{form.values.email.trim()}</strong> is waiting for approval. We'll email you
           your Agent ID once an administrator has reviewed it.

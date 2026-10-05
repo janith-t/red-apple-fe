@@ -4,7 +4,7 @@ import type { Currency } from "./common";
 export type PackageStatus = "draft" | "quoted" | "awaitingPayment" | "confirmed";
 
 export interface TourSummary {
-  ref: string; // e.g. "RA-0001"
+  ref: string; // e.g. "ST-0001"
   clientName: string;
   tourType: string;
   startDate: string; // YYYY-MM-DD
